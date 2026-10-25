@@ -7,12 +7,10 @@ ifndef::imagesdir[:imagesdir: ../images]
 ** What is the main purpose of this project?
 
 To learn how to plan, design, develop, and publish web applications.
-To practice manual coding without AI-assisted code generation, only using AI for assistance,
-for example through the basic AI-assisted features in Visual Studio.
 
 ** What does this app do?
 
-SportsTracker (working name) helps coaches improve groups of individuals and sports teams.
+WazaTracker (working name) helps coaches improve groups of individuals and sports teams.
 
 More precisely, it helps sports coaches to:
 Track activities performed during training sessions.
