@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/docs/">
+    <File Path="docs/01_introduction_and_goals.adoc" />
+    <File Path="docs/02_architecture_constraints.adoc" />
+    <File Path="docs/03_context_and_scope.adoc" />
+    <File Path="docs/04_solution_strategy.adoc" />
+    <File Path="docs/05_building_block_view.adoc" />
+    <File Path="docs/06_runtime_view.adoc" />
+    <File Path="docs/09_architecture_decisions.adoc" />
+  </Folder>
+  <Folder Name="/docs/diagrams/">
+    <File Path="docs/business-logics.mmd" />
+    <File Path="docs/diagrams/business-logics.svg" />
+    <File Path="docs/diagrams/data-access.mmd" />
+    <File Path="docs/diagrams/data-base.mmd" />
+    <File Path="docs/diagrams/data-base.svg" />
+    <File Path="docs/diagrams/overal-system.mmd" />
+    <File Path="docs/diagrams/overal-system.svg" />
+    <File Path="docs/diagrams/ui.mmd" />
+    <File Path="docs/diagrams/ui.svg" />
+  </Folder>
+  <Project Path="SportTracker/SportTracker.csproj" />
+</Solution>

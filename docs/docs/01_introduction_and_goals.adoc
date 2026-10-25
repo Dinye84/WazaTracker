@@ -1,0 +1,97 @@
+```asciidoc
+ifndef::imagesdir[:imagesdir: ../images]
+
+[[section-introduction-and-goals]]
+== Introduction and Goals
+
+** What is the main purpose of this project?
+
+To learn how to plan, design, develop, and publish web applications.
+To practice manual coding without AI-assisted code generation, only using AI for assistance,
+for example through the basic AI-assisted features in Visual Studio.
+
+** What does this app do?
+
+SportsTracker (working name) helps coaches improve groups of individuals and sports teams.
+
+More precisely, it helps sports coaches to:
+Track activities performed during training sessions.
+Get statistics on which activities the team has trained during a season.
+Get valuable insights into what the sports team's focus has been during a selected season.
+See if other drills need to be implemented based on previous seasons.
+Add comments during a session, for example if the team needs to train more on specific drills.
+
+The purpose/goal of the app is to make it easier to track the progress of a sports team by providing
+an easy way to track which exercises were performed and what the focus of each individual training
+session was. The purpose is to be able to see what focus the coach has had during a season and to
+shift focus if needed for the next training session or perhaps for the next season. The user will be
+able to check which exercises and techniques were performed during a session, and the app will
+automatically calculate the percentage focus of all combined training sessions and split it into
+categories.
+
+=== Requirements Overview
+
+Setup:
+Add, remove, or edit:
+
+Teams/sport groups
+Coaches
+Training session dates
+Activities
+Time spent on activities
+Session comments
+Rate session 1-5
+Coaches at individual sessions
+
+Statistics:
+
+See:
+Time spent on each technique and/or drill for an individual session
+Time spent on each technique and/or drill for a specific time span
+Which techniques were never trained
+Comments made during a time span
+Average session rating during a time span
+
+User creation and dashboard:
+
+The main purpose of the user section is to create an organization for the user so that the app's
+data and history can be saved to a specific user.
+Coaches are added manually within the app and do not have individual accounts.
+
+Account:
+
+Register new account
+Add or remove user
+Change username
+Change password
+Change e-mail
+
+Other functions:
+
+Print statistics for a time span
+Auto-save
+Save data locally until an internet connection is available
+Unsaved data indicator when an internet connection is unavailable
+
+=== Quality Goals
+
+* Offline-first PWA. Internet access is not required for normal use, but is required when synchronizing data with the server.
+* The app needs to be user-friendly for new users.
+* The app should limit the amount of personal information required.
+* The app should support at least 50 simultaneous users.
+* The app needs to be scalable for more users and organizations.
+* 95% of API calls should be answered within 500 ms with 50 simultaneous users.
+* The error rate should be below 1%.
+* API performance and error rates will be verified through automated load testing with k6.
+
+=== Stakeholders
+
+Initially, there are no stakeholders. The app is created for training purposes.
+
+[options="header",cols="1,2,2"]
+|===
+|Role/Name|Contact|Expectations
+| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
+| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+|===
+```

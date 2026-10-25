@@ -1,0 +1,11 @@
+```asciidoc
+ifndef::imagesdir[:imagesdir: ../images]
+
+[[section-solution-strategy]]
+== Solution Strategy
+
+ASP.NET Core is used for the backend.
+SQL is used for persistent storage.
+Local storage is used for offline functionality.
+The backend is divided into separate functions.
+```

@@ -1,0 +1,35 @@
+```asciidoc
+ifndef::imagesdir[:imagesdir: ../images]
+
+[[section-context-and-scope]]
+== Context and Scope
+
+The system consists of a frontend and backend that together provide the application's functionality.
+The system communicates with external services for hosting, storage, version control, and other supporting functionality.
+
+=== Business Context
+
+The main user interacts with the frontend application.
+The frontend communicates with the backend to store and retrieve application data.
+The system also communicates with external services when required.
+
+**<Diagram or Table>**
+
+**<Optionally: Explanation of external domain interfaces>**
+
+=== Technical Context
+
+- Blazor WebAssembly PWA for the client application.
+- ASP.NET Core Web API for backend communication.
+- IndexedDB for local offline storage.
+- Entity Framework Core for database communication.
+- Azure SQL Database for central data storage.
+- Microsoft Azure for hosting and deployment.
+- GitHub for version control and source code hosting.
+
+**<Diagram or Table>**
+
+**<Optionally: Explanation of technical interfaces>**
+
+**<Mapping Input/Output to Channels>**
+```

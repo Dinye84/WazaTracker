@@ -1,0 +1,375 @@
+[[section-building-block-view]]
+
+== Building Block View
+
+The system is divided into a frontend, backend, and data storage.
+Each building block has a clear responsibility and communicates through
+defined interfaces.
+
+=== Whitebox Overall System
+
+....
+Application
+├── UI
+├── Business Logic
+├── Data Access
+└── Database
+....i
+
+image::diagrams/overal-system.svg[Overall system]
+
+link:diagrams/overal-system.mmd[Open Mermaid diagram]
+
+Motivation::
+
+The system is divided into UI, Business Logic, Data Access and Database to separate responsibilities and make the application easier to understand, maintain and extend.
+
+Contained Building Blocks::
+
+The system contains four main building blocks:
+
+* UI - Handles what the user sees and interacts with.
+* Business Logic - Handles the application's main rules and functions.
+* Data Access - Handles reading and saving data.
+* Database - Stores the application's persistent data.
+
+Important Interfaces::
+
+* UI communicates with Business Logic.
+* Business Logic communicates with Data Access.
+* Data Access communicates with the Database.
+
+
+==== UI
+
+image::diagrams/ui.svg[UI]
+
+link:diagrams/ui.mmd[Open Mermaid diagram]
+
+....
+UI
+├── Main Overview
+├── Statistics
+└── Profile
+....
+
+Purpose/Responsibility::
+
+To provide the user with an interface to interact with the application and display information.
+
+Interfaces::
+
+To communicate with the Business Logic building block to send user input and receive data to display.
+
+Quality/Performance Characteristics::
+
+The UI should be responsiv and should provide a good user experience across on desktop, tablet and mobile.
+Sports environoments are fast paced and the UI should be asy to navigate without taking focus from the activity,
+for example by using large buttons and clear icons and text fiealds that are easy to type in.
+
+Directory/File Location::
+
+Not decided
+
+Fulfilled Requirements::
+
+Main menu:
+Displayed on all main pages. Navigates between:
+
+* Overview
+* Activity
+* Sessions
+* Statistics
+* Settings
+
+Overview:
+Displays a read-only summary of the selected group and season. Editing takes place in the respective app section.
+
+* Group selection dropdown
+* Season selection dropdown
+* Current session information
+* Total training time for the season
+* Total sessions for the season
+* Seasonal focus by activity category, based on training time
+* Recent sessions
+* Coaches assigned to the current session
+
+Activity:
+Displays the available activities, including techniques and drills.
+
+* Add activity
+* Search activities
+* Sort by name or category
+* Filter by category
+* Edit activity name and category directly in the list
+* Delete activity through its kebab menu
+
+Sessions:
+Displays one selected session. Users can manage its activities, duration, comments, ratings and coaches within the same view.
+
+* Group selection dropdown
+* Season selection dropdown
+* Session selection dropdown showing session names and dates
+* Add session
+* Edit session name, date, start time and end time
+* Assign or remove coaches
+* Complete session
+* Delete session
+* Add activities to the session
+* Edit each activity's duration, comment and rating
+* Change the order of activities using up/down controls
+* Remove an activity from the session through its kebab menu
+* Edit the overall session comment and rating
+* Select a template from a compact list within Sessions
+* Create a new session from a template
+* Save the current session as a template
+
+Statistics:
+Displays statistics for the selected group, season and time range.
+
+* Group selection dropdown
+* Season selection dropdown
+* Select a time range using start and end dates
+* Print statistics
+* See total training time
+* See total sessions
+* See mean session rating
+* See training time and percentage distribution by activity category
+* See time spent on each activity
+* See activities that were never trained during the selected period
+
+Settings:
+Contains account, profile and organization settings.
+
+* Change or remove profile picture
+* Change display name
+* Change email address
+* Change password
+* Sign out
+* Edit organization name
+* Select language
+* Select default group and season
+* Add, edit or remove coaches
+* Add or edit seasons, including their names and date ranges
+* Delete seasons
+
+Shared interaction:
+Existing information is edited directly in its respective view. Creating a session, season, coach or activity uses the same slide-out panel pattern.
+
+* Save changes automatically where indicated
+* Show whether changes are saved or awaiting synchronization
+* Confirm destructive actions before deletion
+
+Open Issues/Problems/Risks::
+
+Risks are
+
+==== Business Logic
+
+image::diagrams/business-logics.svg[Business Logic]
+
+link:diagrams/business-logics.mmd[Open Mermaid diagram]
+
+....
+Business Logic
+├─ SessionService
+│  ├─ AddSession
+│  ├─ EndSession
+│  └─ RemoveSession
+│
+├─ CoachService
+│  ├─ NewCoach
+│  ├─ AddCoach
+│  ├─ EditCoach
+│  └─ RemoveCoach
+│
+├─ ActivityService
+│  ├─ AddActivity
+│  ├─ EditActivity
+│  └─ RemoveActivity
+│
+├─ StatisticService
+│  ├─ StatisticsOverview
+│  ├─ FilterActivities
+│  └─ PrintStatistics
+│
+├─ ProfileService
+│  ├─ NewAccount
+│  ├─ RemoveAccount
+│  ├─ ChangeUsername
+│  ├─ ChangePassword
+│  ├─ ChangeEmail
+│  ├─ AddAvatar
+│  └─ RemoveAvatar
+│
+└─ GroupService
+   ├─ AddGroup
+   ├─ RemoveGroup
+   └─ SyncFromServer
+....
+
+Purpose/Responsibility::
+
+Interfaces::
+
+Quality/Performance Characteristics::
+
+Directory/File Location::
+
+Fulfilled Requirements::
+
+Open Issues/Problems/Risks::
+
+
+==== Data Access
+
+image::diagrams/data-access.svg[Data Access]
+
+link:diagrams/data-access.mmd[Open Mermaid diagram]
+
+....
+Data Access [Reads, saves and retrieves data from the database]
+├─ SportTrackerDbContext [Connection between the application and the database]
+│  ├─ Sessions
+│  ├─ Activities
+│  ├─ Coaches
+│  ├─ Groups
+│  └─ Profiles
+│
+├─ Entities [C# classes that describe the data stored in the database]
+│  ├─ Session
+│  │  ├─ StartTime
+│  │  ├─ EndTime
+│  │  └─ Activities
+│  │
+│  ├─ Activity
+│  │  ├─ Name
+│  │  └─ Session
+│  │
+│  ├─ Coach
+│  │  ├─ Name
+│  │  └─ Groups
+│  │
+│  ├─ Group
+│  │  ├─ Name
+│  │  └─ Coach
+│  │
+│  └─ Profile
+│     ├─ Username
+│     ├─ Email
+│     ├─ PasswordHash
+│     └─ Avatar
+│
+└─ Migrations [Tracks changes to the database structure]
+....
+
+Purpose/Responsibility::
+
+Interfaces::
+
+Quality/Performance Characteristics::
+
+Directory/File Location::
+
+Fulfilled Requirements::
+
+Open Issues/Problems/Risks::
+
+==== Database
+
+image::diagrams/data-base.svg[Database]
+
+link:diagrams/data-base.mmd[Open Mermaid diagram]
+
+
+....
+Database [Stores application data]
+├─ Users
+│  ├─ Id
+│  ├─ Username
+│  ├─ Email
+│  └─ PasswordHash
+│
+├─ Profiles
+│  ├─ Id
+│  ├─ UserId
+│  └─ Avatar
+│
+├─ Sessions
+│  ├─ Id
+│  ├─ UserId
+│  ├─ StartTime
+│  └─ EndTime
+│
+├─ Activities
+│  ├─ Id
+│  ├─ SessionId
+│  └─ Name
+│
+├─ Coaches
+│  ├─ Id
+│  ├─ UserId
+│  └─ Name
+│
+└─ Groups
+   ├─ Id
+   ├─ UserId
+   ├─ CoachId
+   └─ Name
+....
+
+Purpose/Responsibility::
+
+Interfaces::
+
+Quality/Performance Characteristics::
+
+Directory/File Location::
+
+Fulfilled Requirements::
+
+Open Issues/Problems/Risks::
+
+
+==== <Name black box 2>
+
+_<Black box template>_
+
+==== <Name black box n>
+
+_<Black box template>_
+
+
+==== <Name interface 1>
+
+==== <Name interface m>
+
+
+=== Level 2
+
+==== White Box _<building block 1>_
+
+_<White box template>_
+
+==== White Box _<building block 2>_
+
+_<White box template>_
+
+==== White Box _<building block m>_
+
+_<White box template>_
+
+
+=== Level 3
+
+==== White Box _<building block x.1>_
+
+_<White box template>_
+
+==== White Box _<building block x.2>_
+
+_<White box template>_
+
+==== White Box _<building block y.1>_
+
+_<White box template>_
