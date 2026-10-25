@@ -19,5 +19,5 @@
     <File Path="docs/diagrams/ui.mmd" />
     <File Path="docs/diagrams/ui.svg" />
   </Folder>
-  <Project Path="SportTracker/SportTracker.csproj" />
+  <Project Path="WazaTracker/WazaTracker.csproj" />
 </Solution>
